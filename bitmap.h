@@ -60,8 +60,6 @@
 
         boolean ReadUInt(FILE *,unsigned int *);
 
-        void mirrorHeightWise(FILE *,HEADER *, INFOHEADER *);
-
         void mirrorWidthWise(FILE *,HEADER *, INFOHEADER *);
 
     #endif
