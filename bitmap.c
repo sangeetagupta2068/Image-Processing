@@ -47,10 +47,10 @@ void mirrorWidthWise(FILE *fptr,HEADER *header, INFOHEADER *infoheader)
     /*@description:Mirrors the image width wise.
      *@input:File Pointer of the image file to be mirrored,Pointer to the Image Header,Pointer to the Image Information Header
      */
-
-    fseek(fptr,header->offset,SEEK_SET);
-
+  
     char image[infoheader->height][infoheader->width][3];
+  
+    fseek(fptr,header->offset,SEEK_SET);
 
     for(int count1=0;count1<infoheader->height;count1=count1+1)
     {
