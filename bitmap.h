@@ -2,7 +2,7 @@
 /*
  *@author: Sangeeta Gupta
  *@email : tinnigupta1998@gmail.com
- *@PRN : 16030121116
+ *
  *@objective: To understand processing of images using C language as the platform.
  *
  *@description: This is the header file containing the structure definitions and function prototypes used for image processing.
