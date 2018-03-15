@@ -68,8 +68,7 @@ int main(int argc,char **varArg)
       fprintf(stderr,"Number of required colours is %d\n",infoheader.importantColours);
 
       //function call to mirror the image
-      //mirrorWidthWise(fptr,&header,&infoheader);
-      mirrorHeightWise(fptr,&header,&infoheader);
+      mirrorWidthWise(fptr,&header,&infoheader);
       fprintf(stderr, "Successfully mirrored!\n");
 
       fclose(fptr); //closing the .bmp file
