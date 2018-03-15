@@ -4,7 +4,6 @@
 /*
  *@author: Sangeeta Gupta
  *@email : tinnigupta1998@gmail.com
- *@PRN : 16030121116
  *
  *@objective: To understand processing of images using C language as the platform.
  *
