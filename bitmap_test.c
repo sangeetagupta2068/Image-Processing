@@ -66,9 +66,33 @@ int main(int argc,char **varArg)
       fprintf(stderr,"Number of colours is %d\n",infoheader.nColours);
       fprintf(stderr,"Number of required colours is %d\n",infoheader.importantColours);
 
-      //function call to mirror the image
-      mirrorWidthWise(fptr,&header,&infoheader);
-      fprintf(stderr, "Successfully mirrored!\n");
+      while(flag)
+      {
+
+          fprintf(stderr, "\n\nHow do you want to mirror the image?\nEnter 1 for width-wise mirroring and 2 for height-wise mirroring\n");
+          fscanf(stdin,"%d",&choice);
+          fprintf(stderr,"\n\n");
+
+          switch(choice)
+          {
+
+              case 1: mirrorWidthWise(fptr,&header,&infoheader);
+                      fprintf(stderr, "Successfully mirrored!\n");
+                      break;
+
+              case 2: mirrorHeightWise(fptr,&header,&infoheader);
+                      fprintf(stderr, "Successfully mirrored!\n");
+                      break;
+
+              default: fprintf(stderr, "Sorry! Wrong input!\n");
+                       break;
+
+          }
+
+          fprintf(stderr,"Do you want to try again?\nEnter 1 for yes and 0 for no\n");
+          fscanf(stdin,"%d",&flag);
+
+      }
 
       fclose(fptr); //closing the .bmp file
 
