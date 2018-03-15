@@ -57,9 +57,9 @@ void mirrorWidthWise(FILE *fptr,HEADER *header, INFOHEADER *infoheader)
         for(int count2=0;count2<infoheader->width;count2=count2+1)
         {
 
-         image[count1][infoheader->width-count2][0] = getc(fptr);
-         image[count1][infoheader->width-count2][1] = getc(fptr);
-         image[count1][infoheader->width-count2][2] = getc(fptr);
+         image[count1][infoheader->width-1-count2][0] = getc(fptr);
+         image[count1][infoheader->width-1-count2][1] = getc(fptr);
+         image[count1][infoheader->width-1-count2][2] = getc(fptr);
 
        }
     }
@@ -80,3 +80,64 @@ void mirrorWidthWise(FILE *fptr,HEADER *header, INFOHEADER *infoheader)
 
 }
 //mirrorWidthWise ends
+
+void mirrorHeightWise(FILE *fptr,HEADER *header, INFOHEADER *infoheader)
+{
+    /*@description:Mirrors the image height wise.
+     *@input:File Pointer of the image file to be mirrored,Pointer to the Image Header,Pointer to the Image Information Header
+     */
+
+    char temp[3];
+    char image[infoheader->height][infoheader->width][3];
+
+    fseek(fptr,header->offset,SEEK_SET);
+
+    for(int count1=0;count1<infoheader->height;count1=count1+1)
+    {
+        for(int count2=0;count2<infoheader->width;count2=count2+1)
+        {
+
+         image[count1][count2][0] = getc(fptr);
+         image[count1][count2][1] = getc(fptr);
+         image[count1][count2][2] = getc(fptr);
+
+       }
+    }
+
+    for(int count1=0;count1<(infoheader->height)/2;count1=count1+1)
+    {
+        for(int count2=0;count2<infoheader->width;count2=count2+1)
+        {
+
+          temp[0]=image[infoheader->height-1-count1][count2][0];
+          image[infoheader->height-1-count1][count2][0]=image[count1][count2][0];
+          image[count1][count2][0]=temp[0];
+
+          temp[1]=image[infoheader->height-1-count1][count2][1];
+          image[infoheader->height-1-count1][count2][1]=image[count1][count2][1];
+          image[count1][count2][1]=temp[1];
+
+          temp[2]=image[infoheader->height-1-count1][count2][2];
+          image[infoheader->height-1-count1][count2][2]=image[count1][count2][2];
+          image[count1][count2][2]=temp[2];
+
+        }
+    }
+
+    fseek(fptr,header->offset,SEEK_SET);
+
+    for(int count1=0;count1<infoheader->height;count1=count1+1)
+    {
+        for(int count2=0;count2<infoheader->width;count2=count2+1)
+        {
+
+              putc(image[count1][count2][0],fptr);
+              putc(image[count1][count2][1],fptr);
+              putc(image[count1][count2][2],fptr);
+
+        }
+    }
+
+}
+//mirrorHeightWise ends
+
