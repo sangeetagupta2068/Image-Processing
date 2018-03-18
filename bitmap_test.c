@@ -26,7 +26,7 @@ int main(int argc,char **varArg)
 
       FILE *fptr;
       
-      int flag=1;
+      int flag=1 , choice;
 
       //checking if the .bmp file is specified as a command line arguement
       if (argc < 2)
